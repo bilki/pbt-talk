@@ -11,8 +11,12 @@ lazy val pbt = project
 lazy val talk =
   project
     .in(file("modules/talk"))
-    .enablePlugins(MdocPlugin)
+    .enablePlugins(MdocPlugin, GitHubPagesPlugin)
     .settings(
-      mdocIn := baseDirectory.value / "slides"
+      name                := "pbt-talk",
+      gitHubPagesOrgName  := "bilki",
+      gitHubPagesRepoName := "pbt-talk",
+      gitHubPagesSiteDir  := baseDirectory.value / "target" / "mdoc",
+      mdocIn              := baseDirectory.value / "slides"
     )
     .dependsOn(pbt)
