@@ -114,6 +114,16 @@ Note:
 
 ### Entrada
 
+<i class="fa-solid fa-clipboard-question"></i> \
+¿Cuántos tests son suficientes?
+
+Note:
+1. ¿A ojo? ¿Alguna heurística?
+
+
+
+### Entrada
+
 Cobertura de código determinada por la entrada
 
 <i class="fa-solid fa-clipboard-question"></i> \
@@ -194,3 +204,24 @@ Conmutatividad
 
 Note:
 1. Conmutatividad para una operación definida `*` y elementos pertenecientes a un conjunto `S`
+
+
+
+### Generadores
+* Generadores por defecto
+* Generadores personalizados
+
+
+
+### Estrategias
+
+
+
+### Fuentes
+
+| Título    |   Autor                                 |
+|-----------|-----------------------------------------|
+| [User Guide](https://github.com/typelevel/scalacheck/blob/main/doc/UserGuide.md) | Scalacheck |
+| [The lazy programmer's guide to writing thousands of tests](https://www.youtube.com/watch?v=IYzDFHx6QPY) | Scott Wlaschin |
+| [Property-Based Testing: Let Your Testing Library Work for You](https://www.youtube.com/watch?v=pO4_3kg1wMw) | Magda Stożek |
+| [Property (mathematics)](https://en.wikipedia.org/wiki/Property_(mathematics)) | Wikipedia |
