@@ -195,7 +195,8 @@ Note:
 
 Note:
 1. La realidad es que las tres reglas (según Uncle Bob) para el TDD no dicen nada sobre esto
-2. ¿Y si se nos escapa algún test?
+2. Todos los tests unitarios se ejecutan con entradas predeterminadas, ¿qué nos impide implementar nuestro software por casos?
+3. ¿Y si se nos escapa algún test?
 
 
 
@@ -244,6 +245,12 @@ Conmutatividad
 
 Note:
 1. Conmutatividad para una operación definida `*` y elementos pertenecientes a un conjunto `S`
+
+
+
+### Validador de propiedades
+
+![Property validator](imgs/property-validator.png)
 
 
 
