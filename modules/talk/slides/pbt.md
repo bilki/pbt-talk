@@ -114,16 +114,6 @@ Note:
 
 ### Entrada
 
-<i class="fa-solid fa-clipboard-question"></i> \
-¿Cuántos tests son suficientes?
-
-Note:
-1. ¿A ojo? ¿Alguna heurística?
-
-
-
-### Entrada
-
 Cobertura de código determinada por la entrada
 
 <i class="fa-solid fa-clipboard-question"></i> \
@@ -185,6 +175,51 @@ Note:
 
 
 
+### Problema con los ejemplos
+
+<i class="fa-solid fa-clipboard-question"></i> \
+¿Cuántos tests son suficientes?
+
+Note:
+1. ¿A ojo? ¿Alguna heurística?
+2. Recordad que la cobertura completa requiere de la simulación completa de tantos ejemplos como habitantes en los tipos de entrada
+
+
+
+### ¿Qué dice TDD de esto?
+
+> Write production code only to make a failing unit test pass.
+
+<i class="fa-solid fa-list-check"></i> ¿Cuáles?
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+Note:
+1. La realidad es que las tres reglas (según Uncle Bob) para el TDD no dicen nada sobre esto
+2. ¿Y si se nos escapa algún test?
+
+
+
+### Wait a minute...
+
+![Wait a minute](imgs/waitaminute.gif)
+
+¿Y si hubiera alguna otra forma de **probar**?
+
+Note:
+1. Vamos a dar un paso atrás
+2. ¿Y si hubiera alguna forma de escribir tests que no implique listar los ejemplos significativos uno a uno?
+
+
+
+### ¿Matemáticas?
+
+![Highway ramp](imgs/highway.jpg)
+
+Note:
+1. Me suena que en matemáticas había alguna forma de **probar para todos los elementos** de un conjunto, ¿a vosotros no?
+
+
+
 ### Propiedad matemática
 
 > Una propiedad `p` para todos los elementos de un conjunto `X` normalmente se define como \
@@ -192,10 +227,15 @@ Note:
 
 > O bien como el subconjunto de `X` para cuyos elementos la propiedad evalúa a verdadero \
 `{x | p(x) = true}`
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+Note:
+1. Vaya, pues sí parece que existe algo que nos permite definir un comportamiento
+2. Parece que este camino nos puede llevar a poder **probar** comportamientos en nuestro software
 
 
 
-### Propiedad matemática - Ejemplo
+### Propiedad matemática
 
 Conmutatividad
 
@@ -225,3 +265,4 @@ Note:
 | [The lazy programmer's guide to writing thousands of tests](https://www.youtube.com/watch?v=IYzDFHx6QPY) | Scott Wlaschin |
 | [Property-Based Testing: Let Your Testing Library Work for You](https://www.youtube.com/watch?v=pO4_3kg1wMw) | Magda Stożek |
 | [Property (mathematics)](https://en.wikipedia.org/wiki/Property_(mathematics)) | Wikipedia |
+| [Refactoring the three laws of TDD](http://www.javiersaldana.com/articles/tech/refactoring-the-three-laws-of-tdd) | Javier Saldana |
