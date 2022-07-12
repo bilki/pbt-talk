@@ -1,5 +1,11 @@
 ThisBuild / scalaVersion := "2.13.8"
 
+lazy val commonSettings = Seq(
+  libraryDependencies ++= Seq(
+    "org.scalameta" %% "munit" % "0.7.29"
+  )
+)
+
 lazy val `pbt-talk` = project
   .in(file("."))
   .aggregate(pbt, talk)
@@ -7,16 +13,17 @@ lazy val `pbt-talk` = project
 
 lazy val pbt = project
   .in(file("modules/pbt"))
+  .settings(commonSettings)
 
 lazy val talk =
   project
     .in(file("modules/talk"))
     .enablePlugins(MdocPlugin, GitHubPagesPlugin)
     .settings(
-      name                := "pbt-talk",
       gitHubPagesOrgName  := "bilki",
       gitHubPagesRepoName := "pbt-talk",
       gitHubPagesSiteDir  := baseDirectory.value / "target" / "mdoc",
       mdocIn              := baseDirectory.value / "slides"
     )
+    .settings(commonSettings)
     .dependsOn(pbt)

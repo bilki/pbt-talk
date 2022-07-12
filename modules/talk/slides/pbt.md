@@ -65,6 +65,34 @@ Note:
 
 
 
+### Estructura de un test
+
+(Casi) todos los componentes de la definición
+
+```scala mdoc:invisible
+import munit.FunSuite
+
+def factorial(n: Int): Int =
+  if (n <= 1) 1 else n * factorial(n - 1)
+```
+
+```scala mdoc
+class FactorialSuite extends FunSuite {
+  test("Factorial zero base case") {
+    val input     = 0                 // Entrada
+    val expected  = 1                 // Resultado esperado
+    val result    = factorial(input)  // Salida
+    assertEquals(result, expected)    // Aserción
+  }
+}
+```
+
+Note:
+1. El entorno en este caso es vacío, no dependemos de nada externo a la entrada como pudiera ser una bbdd, la red o un reloj
+2. Un test basado en propiedades no tendrá una estructura básica muy distinta a esta
+
+
+
 ### Entrada
 
 Consideremos la entrada a una función
@@ -81,6 +109,24 @@ Note:
 2. ¿Alguien puede decirme el número de habitantes del tipo String?
 3. Si la función tiene varios argumentos, multiplicamos el número de habitantes de todos sus tipos (producto cartesiano)
 4. Por no hablar de otros tipos mucho más complejos, e incluso objetos mutables
+
+
+
+### Entrada
+
+Cobertura de código determinada por la entrada
+
+<i class="fa-solid fa-clipboard-question"></i> \
+¿Tests necesarios para una cobertura completa?
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+Tantos como habitantes en el tipo de entrada
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+Note:
+1. La cobertura de código es determinada por el número y calidad de ejemplos que proveamos
+2. Inabarcable utilizar todos los posibles valores para la entrada -> ejecutar el programa para todos ellos
+3. Valores significativos/interesantes
 
 
 
@@ -112,7 +158,7 @@ Muy directos <i class="fa-solid fa-thumbs-up"></i>
 
 Entrada y salida manuales <i class="fa-solid fa-thumbs-down"></i>
 
-```scala mdoc
+```scala mdoc:reset
 def factorial(n: Int): Int =
   if (n <= 1) 1 else n * factorial(n - 1)
 
@@ -126,3 +172,25 @@ Note:
 1. Se adecúa muy bien al razonamiento humano, biológicamente estamos programados para aprender mediante ejemplos
 2. Dicha habilidad incluye la capacidad para reconocer patrones, a partir de dichos ejemplos (lo veremos más adelante)
 3. El número de ejemplos puede dispararse rápidamente, ¡no hay forma de escribirlos todos!
+
+
+
+### Propiedad matemática
+
+> Una propiedad `p` para todos los elementos de un conjunto `X` normalmente se define como \
+`p: X -> {true, false}`
+
+> O bien como el subconjunto de `X` para cuyos elementos la propiedad evalúa a verdadero \
+`{x | p(x) = true}`
+
+
+
+### Propiedad matemática - Ejemplo
+
+Conmutatividad
+
+> **`x * y = y * x`** \
+∀ x, y ∈ `S`
+
+Note:
+1. Conmutatividad para una operación definida `*` y elementos pertenecientes a un conjunto `S`
