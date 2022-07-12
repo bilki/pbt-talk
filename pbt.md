@@ -65,6 +65,28 @@ Note:
 
 
 
+### Estructura de un test
+
+(Casi) todos los componentes de la definición
+
+
+```scala
+class FactorialSuite extends FunSuite {
+  test("Factorial zero base case") {
+    val input     = 0                 // Entrada
+    val expected  = 1                 // Resultado esperado
+    val result    = factorial(input)  // Salida
+    assertEquals(result, expected)    // Aserción
+  }
+}
+```
+
+Note:
+1. El entorno en este caso es vacío, no dependemos de nada externo a la entrada como pudiera ser una bbdd, la red o un reloj
+2. Un test basado en propiedades no tendrá una estructura básica muy distinta a esta
+
+
+
 ### Entrada
 
 Consideremos la entrada a una función
@@ -81,6 +103,24 @@ Note:
 2. ¿Alguien puede decirme el número de habitantes del tipo String?
 3. Si la función tiene varios argumentos, multiplicamos el número de habitantes de todos sus tipos (producto cartesiano)
 4. Por no hablar de otros tipos mucho más complejos, e incluso objetos mutables
+
+
+
+### Entrada
+
+Cobertura de código determinada por la entrada
+
+<i class="fa-solid fa-clipboard-question"></i> \
+¿Tests necesarios para una cobertura completa?
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+Tantos como habitantes en el tipo de entrada
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+Note:
+1. La cobertura de código es determinada por el número y calidad de ejemplos que proveamos
+2. Inabarcable utilizar todos los posibles valores para la entrada -> ejecutar el programa para todos ellos
+3. Valores significativos/interesantes
 
 
 
@@ -131,3 +171,104 @@ Note:
 1. Se adecúa muy bien al razonamiento humano, biológicamente estamos programados para aprender mediante ejemplos
 2. Dicha habilidad incluye la capacidad para reconocer patrones, a partir de dichos ejemplos (lo veremos más adelante)
 3. El número de ejemplos puede dispararse rápidamente, ¡no hay forma de escribirlos todos!
+
+
+
+### Problema con los ejemplos
+
+<i class="fa-solid fa-clipboard-question"></i> \
+¿Cuántos tests son suficientes?
+
+Note:
+1. ¿A ojo? ¿Alguna heurística?
+2. Recordad que la cobertura completa requiere de la simulación completa de tantos ejemplos como habitantes en los tipos de entrada
+
+
+
+### ¿Qué dice TDD de esto?
+
+> Write production code only to make a failing unit test pass.
+
+<i class="fa-solid fa-list-check"></i> ¿Cuáles?
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+Note:
+1. La realidad es que las tres reglas (según Uncle Bob) para el TDD no dicen nada sobre esto
+2. Todos los tests unitarios se ejecutan con entradas predeterminadas, ¿qué nos impide implementar nuestro software por casos?
+3. ¿Y si se nos escapa algún test?
+
+
+
+### Wait a minute...
+
+![Wait a minute](imgs/waitaminute.gif)
+
+¿Y si hubiera alguna otra forma de **probar**?
+
+Note:
+1. Vamos a dar un paso atrás
+2. ¿Y si hubiera alguna forma de escribir tests que no implique listar los ejemplos significativos uno a uno?
+
+
+
+### ¿Matemáticas?
+
+![Highway ramp](imgs/highway.jpg)
+
+Note:
+1. Me suena que en matemáticas había alguna forma de **probar para todos los elementos** de un conjunto, ¿a vosotros no?
+
+
+
+### Propiedad matemática
+
+> Una propiedad `p` para todos los elementos de un conjunto `X` normalmente se define como \
+`p: X -> {true, false}`
+
+> O bien como el subconjunto de `X` para cuyos elementos la propiedad evalúa a verdadero \
+`{x | p(x) = true}`
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+Note:
+1. Vaya, pues sí parece que existe algo que nos permite definir un comportamiento
+2. Parece que este camino nos puede llevar a poder **probar** comportamientos en nuestro software
+
+
+
+### Propiedad matemática
+
+Conmutatividad
+
+> **`x * y = y * x`** \
+∀ x, y ∈ `S`
+
+Note:
+1. Conmutatividad para una operación definida `*` y elementos pertenecientes a un conjunto `S`
+
+
+
+### Validador de propiedades
+
+![Property validator](imgs/property-validator.png)
+
+
+
+### Generadores
+* Generadores por defecto
+* Generadores personalizados
+
+
+
+### Estrategias
+
+
+
+### Fuentes
+
+| Título    |   Autor                                 |
+|-----------|-----------------------------------------|
+| [User Guide](https://github.com/typelevel/scalacheck/blob/main/doc/UserGuide.md) | Scalacheck |
+| [The lazy programmer's guide to writing thousands of tests](https://www.youtube.com/watch?v=IYzDFHx6QPY) | Scott Wlaschin |
+| [Property-Based Testing: Let Your Testing Library Work for You](https://www.youtube.com/watch?v=pO4_3kg1wMw) | Magda Stożek |
+| [Property (mathematics)](https://en.wikipedia.org/wiki/Property_(mathematics)) | Wikipedia |
+| [Refactoring the three laws of TDD](http://www.javiersaldana.com/articles/tech/refactoring-the-three-laws-of-tdd) | Javier Saldana |
