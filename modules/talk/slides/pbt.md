@@ -300,6 +300,16 @@ Note:
 
 
 
+### Estructura de una propiedad
+
+![Property structure](imgs/property-structure.png)
+
+Note:
+1. Es casi una traducción uno a uno de la propiedad matemática, ¿no?
+2. ¿Dónde está el truco, qué significa ese `forAll`?
+
+
+
 ### Generadores
 * Generadores por defecto
 * Generadores personalizados
@@ -318,5 +328,12 @@ Note:
 | [QuickCheck: A Lightweight Tool for Random Testing of Haskell Programs](https://dl.acm.org/doi/pdf/10.1145/351240.351266) | Koen Claessen, John Hughes |
 | [The lazy programmer's guide to writing thousands of tests](https://www.youtube.com/watch?v=IYzDFHx6QPY) | Scott Wlaschin |
 | [Property-Based Testing: Let Your Testing Library Work for You](https://www.youtube.com/watch?v=pO4_3kg1wMw) | Magda Stożek |
+
+
+
+### Fuentes
+
+| Título    |   Autor                                 |
+|-----------|-----------------------------------------|
 | [Property (mathematics)](https://en.wikipedia.org/wiki/Property_(mathematics)) | Wikipedia |
 | [Refactoring the three laws of TDD](http://www.javiersaldana.com/articles/tech/refactoring-the-three-laws-of-tdd) | Javier Saldana |
