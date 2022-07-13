@@ -354,6 +354,60 @@ Note:
 
 
 
+### Encogiendo
+
+¿Qué entrada mínima produce un fallo?
+
+![Shrunk the kids](imgs/shrunk.gif)
+
+
+
+### Shrinker
+
+Genera valores cada vez más pequeños
+
+```scala mdoc
+def adultsFrom(persons: List[Person]): List[Person] =
+  persons.filter(_.age > 16) // debería ser > 17
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+Mínima entrada posible errónea
+<!-- .element: class="fragment" data-fragment-index="2" -->
+```scala mdoc
+val adults = adultsFrom(List(Person("Pepe", 17))) // vacío?
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+Note:
+1. Especialmente útil cuando por ejemplo la entrada es una cadena, o una lista de elementos
+2. El shrinker va a tratar de buscar la entrada mínima que produce el fallo
+3. En este ejemplo vemos que _no_ es vacío, por tanto la propiedad fallaría (ver código de ejemplo)
+
+
+
+### Semillas
+
+Si la entrada es aleatoria...
+
+¿Cómo repetimos el test en el futuro?
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```text
+You can reproduce this failure by adding the following override
+  to your suite:
+
+  override val scalaCheckInitialSeed =
+    "89puZ9LMPcObM1_qSIt9tRxapPu-hWG5R4XcwVwH7BH="
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+Note:
+1. Repetimos el test hasta que la implementación lo pase
+2. Una vez que pasa el test, borramos la semilla y comprobamos que la propiedad pasa para otras entradas aleatorias
+
+
+
 ### Estrategias
 
 
