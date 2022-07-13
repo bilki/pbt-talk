@@ -2,7 +2,8 @@ ThisBuild / scalaVersion := "2.13.8"
 
 lazy val commonSettings = Seq(
   libraryDependencies ++= Seq(
-    "org.scalameta" %% "munit" % "0.7.29"
+    "org.scalameta"  %% "munit"      % "0.7.29",
+    "org.scalacheck" %% "scalacheck" % "1.16.0"
   )
 )
 
