@@ -314,16 +314,16 @@ Note:
 
 ```scala
 val number = Gen.posNum[Int].sample.get
-// number: Int = 60
+// number: Int = 9
 
 val string = Gen.stringOfN(10, Gen.alphaChar).sample.get
-// string: String = "IaCbXMoQYx"
+// string: String = "SbwjAXSjzC"
 
 val boolean = arbitrary[Boolean].sample.get
-// boolean: Boolean = true
+// boolean: Boolean = false
 
 val numbers = Gen.listOfN(5, Gen.posNum[Int]).sample.get
-// numbers: List[Int] = List(80, 81, 26, 65, 92)
+// numbers: List[Int] = List(80, 65, 26, 22, 68)
 ```
 
 Note:
@@ -343,15 +343,70 @@ val personGen = for {
   name <- Gen.stringOfN(10, Gen.alphaChar)
   age  <- Gen.chooseNum(1, 125)
 } yield Person(name, age)
-// personGen: Gen[Person] = org.scalacheck.Gen$$anon$5@6fed5802
+// personGen: Gen[Person] = org.scalacheck.Gen$$anon$5@5b1a5afe
 
 val person = personGen.sample.get
-// person: Person = Person(name = "hxNlgMhcEW", age = 17)
+// person: Person = Person(name = "FlaSTlklSk", age = 1)
 ```
 
 Note:
 1. Muy sencillo combinar generadores por defecto para generar valores compuestos más complejos
 2. Generadores más complejos = posibilidad de probar automáticamente lógica con entradas más complejas
+
+
+
+### Encogiendo
+
+¿Qué entrada mínima produce un fallo?
+
+![Shrunk the kids](imgs/shrunk.gif)
+
+
+
+### Shrinker
+
+Genera valores cada vez más pequeños
+
+```scala
+def adultsFrom(persons: List[Person]): List[Person] =
+  persons.filter(_.age > 16) // debería ser > 17
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+Mínima entrada posible errónea
+<!-- .element: class="fragment" data-fragment-index="2" -->
+```scala
+val adults = adultsFrom(List(Person("Pepe", 17))) // vacío?
+// adults: List[Person] = List(Person(name = "Pepe", age = 17))
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+Note:
+1. Especialmente útil cuando por ejemplo la entrada es una cadena, o una lista de elementos
+2. El shrinker va a tratar de buscar la entrada mínima que produce el fallo
+3. En este ejemplo vemos que _no_ es vacío, por tanto la propiedad fallaría (ver código de ejemplo)
+
+
+
+### Semillas
+
+Si la entrada es aleatoria...
+
+¿Cómo repetimos el test en el futuro?
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```text
+You can reproduce this failure by adding the following override
+  to your suite:
+
+  override val scalaCheckInitialSeed =
+    "89puZ9LMPcObM1_qSIt9tRxapPu-hWG5R4XcwVwH7BH="
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+Note:
+1. Repetimos el test hasta que la implementación lo pase
+2. Una vez que pasa el test, borramos la semilla y comprobamos que la propiedad pasa para otras entradas aleatorias
 
 
 
