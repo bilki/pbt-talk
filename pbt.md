@@ -309,9 +309,49 @@ Note:
 
 
 
-### Generadores
-* Generadores por defecto
-* Generadores personalizados
+### Generadores por defecto
+
+
+```scala
+val number = Gen.posNum[Int].sample.get
+// number: Int = 60
+
+val string = Gen.stringOfN(10, Gen.alphaChar).sample.get
+// string: String = "IaCbXMoQYx"
+
+val boolean = arbitrary[Boolean].sample.get
+// boolean: Boolean = true
+
+val numbers = Gen.listOfN(5, Gen.posNum[Int]).sample.get
+// numbers: List[Int] = List(80, 81, 26, 65, 92)
+```
+
+Note:
+1. Generadores más habituales
+2. Estos generadores dan valores aleatorios en todo el rango posible del tipo (habitantes)
+3. El verificador de propiedades intentará dar más peso a los valores más problemáticos
+4. Habitualmente estos valores son los casos límite típicos: 0, -1, máximo entero, mínimo, cadena vacía, lista vacía...
+
+
+
+### Generadores personalizados
+
+```scala
+case class Person(name: String, age: Int)
+
+val personGen = for {
+  name <- Gen.stringOfN(10, Gen.alphaChar)
+  age  <- Gen.chooseNum(1, 125)
+} yield Person(name, age)
+// personGen: Gen[Person] = org.scalacheck.Gen$$anon$5@6fed5802
+
+val person = personGen.sample.get
+// person: Person = Person(name = "hxNlgMhcEW", age = 17)
+```
+
+Note:
+1. Muy sencillo combinar generadores por defecto para generar valores compuestos más complejos
+2. Generadores más complejos = posibilidad de probar automáticamente lógica con entradas más complejas
 
 
 
