@@ -114,12 +114,11 @@ Note:
 
 ### Entrada
 
-Cobertura de código determinada por la entrada
-
 <i class="fa-solid fa-clipboard-question"></i> \
 ¿Tests necesarios para una cobertura completa?
 <!-- .element: class="fragment" data-fragment-index="1" -->
 
+<i class="fa-solid fa-arrow-down-long"></i> \
 Tantos como habitantes en el tipo de entrada
 <!-- .element: class="fragment" data-fragment-index="2" -->
 
