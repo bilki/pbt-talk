@@ -108,12 +108,11 @@ Note:
 
 ### Entrada
 
-Cobertura de código determinada por la entrada
-
 <i class="fa-solid fa-clipboard-question"></i> \
 ¿Tests necesarios para una cobertura completa?
 <!-- .element: class="fragment" data-fragment-index="1" -->
 
+<i class="fa-solid fa-arrow-down-long"></i> \
 Tantos como habitantes en el tipo de entrada
 <!-- .element: class="fragment" data-fragment-index="2" -->
 
@@ -189,13 +188,26 @@ Note:
 
 > Write production code only to make a failing unit test pass.
 
-<i class="fa-solid fa-list-check"></i> ¿Cuáles?
+<i class="fa-solid fa-list-check"></i> Pero, ¿cuáles?
 <!-- .element: class="fragment" data-fragment-index="1" -->
 
 Note:
 1. La realidad es que las tres reglas (según Uncle Bob) para el TDD no dicen nada sobre esto
-2. Todos los tests unitarios se ejecutan con entradas predeterminadas, ¿qué nos impide implementar nuestro software por casos?
+2. Todos los tests unitarios se ejecutan con entradas específicas, ¿qué nos impide implementar nuestro software por casos?
 3. ¿Y si se nos escapa algún test?
+
+
+
+### Más allá de TDD
+
+* Cobertura insuficiente
+* Implementación dirigida por ejemplos
+* Incertidumbre
+
+Note:
+1. Debido al limitado número de ejemplos y valores a la entrada
+2. Hemos visto que ejemplos específicos dan lugar a implementaciones específicas, hay que aplicar heurísticas (¿programación como arte?)
+3. La incertidumbre de si hemos acertado con los ejemplos y valores
 
 
 
@@ -247,9 +259,53 @@ Note:
 
 
 
+### Propiedades en computación
+
+¿Cómo evitar los ejemplos?
+
+Entrada manual <i class="fa-solid fa-chevron-right"></i> **aleatoria**
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+Salida manual <i class="fa-solid fa-chevron-right"></i> **propiedades**
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+Note:
+1. Uno de los problemas que vimos fue la implementación acoplada a las entradas de los tests
+2. Vamos a eliminar ese problema de raíz: la entrada va a ser aleatoria
+3. Vamos a pasar de dar ejemplos a definir de forma precisa la especificación (¡requisitos!)
+4. No habrá más aserciones sobre valores fijos de salida
+
+
+
 ### Validador de propiedades
 
 ![Property validator](imgs/property-validator.png)
+
+Note:
+1. Vamos a necesitar soporte de software para poder escribir propiedades cómodamente
+2. Este soporte se ofrece en forma de frameworks o librerías de testing denominadas validadores de propiedades
+
+
+
+### Primer validador
+
+QuickCheck - ICFP 2000
+
+![QuickCheck paper](imgs/quickcheck.png)
+
+Note:
+1. Es relativamente reciente, algo curioso en computación, ya que suele reutilizarse teoría de los 60/70/80
+2. Originalmente escrito en Haskell, ha sido portado a otros lenguajes con más o menos éxito
+
+
+
+### Estructura de una propiedad
+
+![Property structure](imgs/property-structure.png)
+
+Note:
+1. Es casi una traducción uno a uno de la propiedad matemática, ¿no?
+2. ¿Dónde está el truco, qué significa ese `forAll`?
 
 
 
@@ -268,7 +324,15 @@ Note:
 | Título    |   Autor                                 |
 |-----------|-----------------------------------------|
 | [User Guide](https://github.com/typelevel/scalacheck/blob/main/doc/UserGuide.md) | Scalacheck |
+| [QuickCheck: A Lightweight Tool for Random Testing of Haskell Programs](https://dl.acm.org/doi/pdf/10.1145/351240.351266) | Koen Claessen, John Hughes |
 | [The lazy programmer's guide to writing thousands of tests](https://www.youtube.com/watch?v=IYzDFHx6QPY) | Scott Wlaschin |
 | [Property-Based Testing: Let Your Testing Library Work for You](https://www.youtube.com/watch?v=pO4_3kg1wMw) | Magda Stożek |
+
+
+
+### Fuentes
+
+| Título    |   Autor                                 |
+|-----------|-----------------------------------------|
 | [Property (mathematics)](https://en.wikipedia.org/wiki/Property_(mathematics)) | Wikipedia |
 | [Refactoring the three laws of TDD](http://www.javiersaldana.com/articles/tech/refactoring-the-three-laws-of-tdd) | Javier Saldana |
