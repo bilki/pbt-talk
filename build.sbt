@@ -8,6 +8,10 @@ lazy val commonSettings = Seq(
   )
 )
 
+scalacOptions ++= Seq(
+  "-Yrangepos"
+)
+
 lazy val `pbt-talk` = project
   .in(file("."))
   .aggregate(pbt, talk)
