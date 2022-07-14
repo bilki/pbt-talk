@@ -191,6 +191,9 @@ Note:
 <i class="fa-solid fa-list-check"></i> Pero, ¿cuáles?
 <!-- .element: class="fragment" data-fragment-index="1" -->
 
+_Show me the code_ <i class="fa-solid fa-code"></i>
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
 Note:
 1. La realidad es que las tres reglas (según Uncle Bob) para el TDD no dicen nada sobre esto
 2. Todos los tests unitarios se ejecutan con entradas específicas, ¿qué nos impide implementar nuestro software por casos?
@@ -289,7 +292,7 @@ Note:
 
 ### Primer validador
 
-QuickCheck - ICFP 2000
+_QuickCheck_ - ICFP 2000
 
 ![QuickCheck paper](imgs/quickcheck.png)
 
@@ -303,6 +306,9 @@ Note:
 
 ![Property structure](imgs/property-structure.png)
 
+_Show me the code_ <i class="fa-solid fa-code"></i>
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
 Note:
 1. Es casi una traducción uno a uno de la propiedad matemática, ¿no?
 2. ¿Dónde está el truco, qué significa ese `forAll`?
@@ -314,16 +320,16 @@ Note:
 
 ```scala
 val number = Gen.posNum[Int].sample.get
-// number: Int = 9
+// number: Int = 45
 
 val string = Gen.stringOfN(10, Gen.alphaChar).sample.get
-// string: String = "SbwjAXSjzC"
+// string: String = "GFqXfwYMMy"
 
 val boolean = arbitrary[Boolean].sample.get
-// boolean: Boolean = false
+// boolean: Boolean = true
 
 val numbers = Gen.listOfN(5, Gen.posNum[Int]).sample.get
-// numbers: List[Int] = List(80, 65, 26, 22, 68)
+// numbers: List[Int] = List(28, 66, 69, 97, 36)
 ```
 
 Note:
@@ -343,10 +349,10 @@ val personGen = for {
   name <- Gen.stringOfN(10, Gen.alphaChar)
   age  <- Gen.chooseNum(1, 125)
 } yield Person(name, age)
-// personGen: Gen[Person] = org.scalacheck.Gen$$anon$5@5b1a5afe
+// personGen: Gen[Person] = org.scalacheck.Gen$$anon$5@496b4285
 
 val person = personGen.sample.get
-// person: Person = Person(name = "FlaSTlklSk", age = 1)
+// person: Person = Person(name = "PKIrJkpeWJ", age = 105)
 ```
 
 Note:
@@ -410,7 +416,154 @@ Note:
 
 
 
-### Estrategias
+### Encontrar propiedades
+
+Es... complicado
+
+Pero nos fuerza a reflexionar
+
+> ¿Cuál es en realidad la especificación? \
+<img src="imgs/rodin.jpg" style="height:200px;"/>
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+Note:
+1. Es complicado encontrar propiedades cuando no conocemos el dominio
+2. O la persona especificando los requisitos se centra en el cómo, y no en el qué
+3. Afortunadamente, existen algunas estrategias para encontrar propiedades
+
+
+
+### Varios caminos (I)
+
+![Paths 1](imgs/paths1.png)
+
+`X y luego F = F y luego X`
+
+Note:
+1. Cuando varios caminos llevan a la misma salida, podemos convertirlo en una propiedad
+2. Ejemplos típicos, asociatividad y conmutatividad
+
+
+
+### Varios caminos (II)
+
+![Paths 2](imgs/paths2.png)
+
+`Negar, ordenar =` \
+`Ordenar, negar y reverso`
+
+Note:
+1. Una función de ordenación para enteros negativos debe dar el mismo resultado que esa función aplicada a positivos, negados y dados la vuelta
+2. Este tipo de estrategia suele ir ligada al conocimiento que tenemos de la estructura de datos asociada y los elementos que contiene
+
+
+
+### Ida y vuelta
+
+![Reverse](imgs/reverse.png)
+
+Note:
+1. Muy común, la podemos observar en serialización/deserialización, y en general en cualquier transformación invertible (sin pérdidas)
+2. Recordemos: ¡los generadores proveen la entrada aleatoria necesaria! Esta propiedad es casi gratis
+
+
+
+### Invariantes (I)
+
+![Invariant](imgs/invariant.png)
+
+Una propiedad constante de la entrada y salida
+
+Note:
+1. Algunas funciones sabemos que no alteran ciertas cualidades tanto de la entrada como la salida
+2. Esto puede ser particularmente útil con operaciones sólo lectura sobre estructuras de datos
+
+
+
+### Invariantes (II)
+
+![Combinations](imgs/combinations.png)
+
+Salida limitada a ciertos valores
+
+Note:
+1. Otro ejemplo interesante es que sólo puedan existir cierto número de combinaciones posibles a la salida
+2. Al ordenar una lista las permutaciones posibles son limitadas, puede ocurrir con otras estructuras
+
+
+
+### Idempotencia
+
+![Distinct](imgs/distinct.png)
+
+Salida estable tras repetición
+
+Note:
+1. Una cualidad muy interesante, no importa el número de veces que se aplique la función, el resultado no cambiará
+
+
+
+### Reformulación
+
+![Pairs](imgs/pairs.png)
+
+Problema reducido a su mínima expresión
+
+Note:
+1. Otra forma de pensar en la salida, seleccionando subproblemas más pequeños
+2. Puede verse como un divide y vencerás, si se cumple algo para conjuntos reducidos, se cumple para el conjunto que los contiene a todos
+
+
+
+### Oráculo
+
+![Oracle](imgs/oracle.png)
+
+Situación ideal ante entrada aleatoria
+
+Note:
+1. Perfecto para reimplementaciones (otro lenguaje, reescritura desde cero...)
+2. Si el sistema anterior cumplía la especificación correctamente, podemos comparar resultados
+
+
+
+### ¿Funciona con TDD?
+
+Sí, funciona con TDD
+
+Quizás no de la forma que esperas
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+_Show me the code_ <i class="fa-solid fa-code"></i> <a href="https://github.com/bilki/dni-kata/tree/pbt/scala/src/test/scala/com/meetup/swcraftersmurcia"><i class="fa-brands fa-github-square"></i></a>
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+
+
+### Propiedades vs Ejemplos
+
+<i class="fa-solid fa-face-smile"></i>
+<!-- .element: class="fragment" data-fragment-index="1" -->
+* Más generales
+<!-- .element: class="fragment" data-fragment-index="1" -->
+* Pueden revelar casos límite
+<!-- .element: class="fragment" data-fragment-index="1" -->
+* Especificación más clara
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+<i class="fa-solid fa-face-frown"></i>
+<!-- .element: class="fragment" data-fragment-index="2" -->
+* Más difíciles
+<!-- .element: class="fragment" data-fragment-index="2" -->
+* Menos directos
+<!-- .element: class="fragment" data-fragment-index="2" -->
+* Seguimos necesitando ejemplos
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+
+
+### Preguntas
+
+![Questions](imgs/questions.webp)
 
 
 
