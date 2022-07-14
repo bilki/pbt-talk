@@ -414,7 +414,30 @@ Note:
 
 
 
-### Estrategias
+### Encontrar propiedades
+
+Es... complicado
+
+Pero nos fuerza a reflexionar
+
+> ¿Cuál es en realidad la especificación? \
+<img src="imgs/rodin.jpg" style="height:200px;"/>
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+Note:
+1. Es complicado encontrar propiedades cuando no conocemos el dominio
+2. O la persona especificando los requisitos se centra en el cómo, y no en el qué
+3. Afortunadamente, existen algunas estrategias para encontrar propiedades
+
+
+
+### Oráculo
+
+![Oracle](imgs/oracle.png)
+
+Note:
+1. Perfecto para reimplementaciones (otro lenguaje, reescritura desde cero...)
+2. Si el sistema anterior cumplía la especificación correctamente, podemos comparar resultados
 
 
 
