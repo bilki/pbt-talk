@@ -5,9 +5,9 @@ import Factorial._
 
 class AnotherFactorialSuite extends FunSuite {
 
-  test("Base case 0 must return 0") {
+  test("Base case 0 must return 1") {
     val input    = 0
-    val expected = 0L
+    val expected = 1L
     val result   = input.factorial
     assertEquals(result, expected)
   }
@@ -26,9 +26,9 @@ class AnotherFactorialSuite extends FunSuite {
     assertEquals(result, expected)
   }
 
-  test("Negative number must return 0") {
+  test("Negative number must return 1") {
     val input    = -1
-    val expected = 0L
+    val expected = 1L
     val result   = input.factorial
     assertEquals(result, expected)
   }
