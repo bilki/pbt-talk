@@ -501,6 +501,18 @@ Note:
 
 
 
+### Reformulación
+
+![Pairs](imgs/pairs.png)
+
+Problema reducido a su mínima expresión
+
+Note:
+1. Otra forma de pensar en la salida, seleccionando subproblemas más pequeños
+2. Puede verse como un divide y vencerás, si se cumple algo para conjuntos reducidos, se cumple para el conjunto que los contiene a todos
+
+
+
 ### Oráculo
 
 ![Oracle](imgs/oracle.png)
