@@ -525,6 +525,40 @@ Note:
 
 
 
+### ¿Funciona con TDD?
+
+Sí, funciona con TDD
+
+Quizás no de la forma que esperas
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+_Show me the code_ <i class="fa-solid fa-code"></i> <a href="https://github.com/bilki/dni-kata/tree/pbt/scala/src/test/scala/com/meetup/swcraftersmurcia"><i class="fa-brands fa-github-square"></i></a>
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+
+
+### Propiedades vs Ejemplos
+
+<i class="fa-solid fa-face-smile"></i>
+<!-- .element: class="fragment" data-fragment-index="1" -->
+* Más generales
+<!-- .element: class="fragment" data-fragment-index="1" -->
+* Pueden revelar casos límite
+<!-- .element: class="fragment" data-fragment-index="1" -->
+* Especificación más clara
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+<i class="fa-solid fa-face-frown"></i>
+<!-- .element: class="fragment" data-fragment-index="2" -->
+* Más difíciles
+<!-- .element: class="fragment" data-fragment-index="2" -->
+* Menos directos
+<!-- .element: class="fragment" data-fragment-index="2" -->
+* Seguimos necesitando ejemplos
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+
+
 ### Fuentes
 
 | Título    |   Autor                                 |
