@@ -456,6 +456,40 @@ Note:
 
 
 
+### Ida y vuelta
+
+![Reverse](imgs/reverse.png)
+
+Note:
+1. Muy común, la podemos observar en serialización/deserialización, y en general en cualquier transformación invertible (sin pérdidas)
+2. Recordemos: ¡los generadores proveen la entrada aleatoria necesaria! Esta propiedad es casi gratis
+
+
+
+### Invariantes (I)
+
+![Invariant](imgs/invariant.png)
+
+Una propiedad constante de la entrada y salida
+
+Note:
+1. Algunas funciones sabemos que no alteran ciertas cualidades tanto de la entrada como la salida
+2. Esto puede ser particularmente útil con operaciones sólo lectura sobre estructuras de datos
+
+
+
+### Invariantes (II)
+
+![Combinations](imgs/combinations.png)
+
+Salida limitada a ciertos valores
+
+Note:
+1. Otro ejemplo interesante es que sólo puedan existir cierto número de combinaciones posibles a la salida
+2. Al ordenar una lista las permutaciones posibles son limitadas, puede ocurrir con otras estructuras
+
+
+
 ### Oráculo
 
 ![Oracle](imgs/oracle.png)
