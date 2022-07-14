@@ -431,6 +431,23 @@ Note:
 
 
 
+### Varios caminos (I)
+
+![Paths](imgs/paths1.png)
+
+`X y luego F = F y luego X`
+
+Note:
+1. Cuando varios caminos llevan a la misma salida, podemos convertirlo en una propiedad
+2. Ejemplos típicos, asociatividad y conmutatividad
+
+
+
+### Varios caminos (II)
+
+
+
+
 ### Oráculo
 
 ![Oracle](imgs/oracle.png)
