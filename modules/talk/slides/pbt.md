@@ -559,6 +559,12 @@ _Show me the code_ <i class="fa-solid fa-code"></i> <a href="https://github.com/
 
 
 
+### Preguntas
+
+![Questions](imgs/questions.webp)
+
+
+
 ### Fuentes
 
 | Título    |   Autor                                 |
