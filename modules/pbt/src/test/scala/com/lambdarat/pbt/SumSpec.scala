@@ -4,12 +4,14 @@ import munit.ScalaCheckSuite
 import org.scalacheck._
 import org.scalacheck.Prop._
 
-class SumProperties extends ScalaCheckSuite {
+import Sum.add
+
+class SumSpec extends ScalaCheckSuite {
 
   test("Sum commutativity") {
     forAll { (x: Int, y: Int) =>
-      val sum         = x + y
-      val reversedSum = y + x
+      val sum         = add(x, y)
+      val reversedSum = add(y, x)
 
       assertEquals(sum, reversedSum)
     }
@@ -17,8 +19,8 @@ class SumProperties extends ScalaCheckSuite {
 
   test("Sum associativity") {
     forAll { (x: Int, y: Int, z: Int) =>
-      val firstPairSum  = (x + y) + z
-      val secondPairSum = x + (y + z)
+      val firstPairSum  = add(add(x, y), z)
+      val secondPairSum = add(x, add(y, z))
 
       assertEquals(firstPairSum, secondPairSum)
     }
@@ -26,7 +28,7 @@ class SumProperties extends ScalaCheckSuite {
 
   test("Sum identity") {
     forAll { x: Int =>
-      val sumZero  = x + 0
+      val sumZero  = add(x, 0)
       val expected = x
 
       assertEquals(sumZero, expected)

@@ -192,6 +192,9 @@ Note:
 <i class="fa-solid fa-list-check"></i> Pero, ¿cuáles?
 <!-- .element: class="fragment" data-fragment-index="1" -->
 
+_Show me the code_ <i class="fa-solid fa-code"></i>
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
 Note:
 1. La realidad es que las tres reglas (según Uncle Bob) para el TDD no dicen nada sobre esto
 2. Todos los tests unitarios se ejecutan con entradas específicas, ¿qué nos impide implementar nuestro software por casos?
@@ -290,7 +293,7 @@ Note:
 
 ### Primer validador
 
-QuickCheck - ICFP 2000
+_QuickCheck_ - ICFP 2000
 
 ![QuickCheck paper](imgs/quickcheck.png)
 
@@ -303,6 +306,9 @@ Note:
 ### Estructura de una propiedad
 
 ![Property structure](imgs/property-structure.png)
+
+_Show me the code_ <i class="fa-solid fa-code"></i>
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
 Note:
 1. Es casi una traducción uno a uno de la propiedad matemática, ¿no?

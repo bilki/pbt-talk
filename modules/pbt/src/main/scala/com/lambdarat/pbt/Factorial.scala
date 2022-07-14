@@ -12,7 +12,6 @@ object Factorial {
   }
 
   implicit class FactorialOps(number: Long) {
-
     def factorial: Long = {
       @tailrec
       def factorialRec(acc: Long, next: Long): Long =
