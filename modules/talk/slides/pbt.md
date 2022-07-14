@@ -490,9 +490,22 @@ Note:
 
 
 
+### Idempotencia
+
+![Distinct](imgs/distinct.png)
+
+Salida estable tras repetición
+
+Note:
+1. Una cualidad muy interesante, no importa el número de veces que se aplique la función, el resultado no cambiará
+
+
+
 ### Oráculo
 
 ![Oracle](imgs/oracle.png)
+
+Situación ideal ante entrada aleatoria
 
 Note:
 1. Perfecto para reimplementaciones (otro lenguaje, reescritura desde cero...)
