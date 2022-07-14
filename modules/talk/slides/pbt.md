@@ -433,7 +433,7 @@ Note:
 
 ### Varios caminos (I)
 
-![Paths](imgs/paths1.png)
+![Paths 1](imgs/paths1.png)
 
 `X y luego F = F y luego X`
 
@@ -445,6 +445,14 @@ Note:
 
 ### Varios caminos (II)
 
+![Paths 2](imgs/paths2.png)
+
+`Negar, ordenar =` \
+`Ordenar, negar y reverso`
+
+Note:
+1. Una función de ordenación para enteros negativos debe dar el mismo resultado que esa función aplicada a positivos, negados y dados la vuelta
+2. Este tipo de estrategia suele ir ligada al conocimiento que tenemos de la estructura de datos asociada y los elementos que contiene
 
 
 
